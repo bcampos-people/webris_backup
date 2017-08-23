@@ -1,0 +1,38 @@
+/*##### the dragtable stuff #####*/
+.dragtable-sortable { 
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    -moz-user-select: none;
+}
+.dragtable-sortable li {
+    margin: 0;
+    padding: 0;
+    float: left;
+    font-size: 1em;
+    background: $bg-dark-theme; 
+}
+
+.dragtable-sortable th,
+.dragtable-sortable td{
+    border-left: 0px;
+}
+
+.ui-sortable-helper {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+.ui-sortable-placeholder { 
+    -moz-box-shadow: 4px 5px 4px $bg-dark-theme inset;
+    -webkit-box-shadow: 4px 5px 4px $bg-dark-theme inset;
+    box-shadow: 4px 5px 4px $bg-dark-theme inset;
+    border-bottom: 1px solid $bg-dark-theme;
+    border-top: 1px solid $bg-dark-theme;
+    visibility: visible !important;
+    background: $bg-dark-theme !important; 
+    visibility: visible !important;
+}
+.ui-sortable-placeholder * { 
+    opacity: 0.0;
+    visibility: hidden; 
+}

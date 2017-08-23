@@ -1,0 +1,10 @@
+.server-location {
+    padding: 10px;
+    max-height: 38px;
+    font-weight: bold;
+    background-color: $gray-base;
+
+    p {
+        color: rgba($text-dark-theme-base, 0.4);
+    }
+}

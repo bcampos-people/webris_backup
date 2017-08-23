@@ -1,0 +1,29 @@
+#table_fixed{
+    
+    position: sticky;
+    top:0;
+    z-index: 1000;
+    // margin-bottom: 50px;
+    .grip {
+        cursor: not-allowed !important;
+    }
+}
+
+#loading{
+    text-align: center;
+    padding-top:15vh;
+    h2{
+        color:white;
+        font-style: italic;
+        line-height: 30px;
+        margin-top:10px;
+        padding:0;
+    }
+    img{
+        position: relative;
+        left: 42%;
+        // margin:auto;
+        width: 50px;
+        float: left;
+    }
+}

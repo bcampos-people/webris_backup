@@ -1,0 +1,168 @@
+$datatable-row-height: 45px;
+$datatable-head-height: 58px;
+$datatable-row-padding: 20px;
+$datatable-size-btn-bullet: 32px;
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+.ngx-datatable {
+    position: absolute !important;  
+    height: auto !important;
+    width: 100%;
+     
+    top: 315px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.ngx-datatable .datatable-body-cell {
+    -webkit-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    -o-user-select: auto !important;
+    user-select: auto !important;
+}
+
+.ngx-datatable.dark {
+    color: darken($text-dark-theme-base, 30%);
+    background-color: $bg-dark-theme;
+    font-size: 1em;
+}
+
+.datatable-row-wrapper {
+    &:nth-of-type(odd),
+    &:nth-of-type(odd) .atendimento-row,
+    &:nth-of-type(odd) .btn-inverse {
+        background-color: $bg-light-datagrid;
+    }
+    &:nth-of-type(even) .atendimento-row,
+    &:nth-of-type(even) .btn-inverse {
+        background-color: $bg-dark-theme;
+    }
+}
+
+.datatable-header-cell {
+    background-color: $bg-dark-theme;
+
+    > div {
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        justify-content: space-between;
+        height: $datatable-head-height - 3px;
+        padding-left: $datatable-row-padding;
+        border-right: 2px solid $bg-light-datagrid;
+
+        > [class*='datatable-icon-'] {
+            font-size: 1.85em;
+            padding: 5px 5px 0 0;
+        }
+
+        > .atendimento-head {
+            cursor: pointer;
+            margin-left: 45px;
+        }
+    }
+}
+
+.datatable-header-cell {
+    & .head-flex {
+        margin-right: -4px;
+        width: 200px !important;
+        height: $datatable-head-height;
+        background-color: $bg-dark-theme;
+        border-right: 2px solid $bg-dark-theme;
+    }
+}
+    
+.datatable-body-row > div {
+    align-items: center;
+    justify-content: center;
+}
+
+.row-flex {
+    display: flex;
+    height: $datatable-row-height;
+    border-bottom: 5px solid $bg-dark-theme;
+
+    &.row-flex-paciente {
+        position: relative;
+    }
+
+    > * {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+        box-sizing: content-box;
+        justify-content: flex-start;
+        padding-left: $datatable-row-padding;
+        padding-right: $datatable-row-padding;
+    }
+    
+    // Atendimento
+    > .atendimento-num {
+        flex: 1 0 110px;
+        justify-content: flex-end;
+    }
+    
+    > .nav-pills {
+        flex: 1 0 auto;
+        padding-left: 0;
+        justify-content: flex-end;
+        padding-right: $datatable-row-padding - 10px;
+    }
+
+    // Paciente
+    > .nome-paciente {
+        flex: 1 1 169px;
+        padding-right: 0;
+    }
+    > .btn-toolbar {
+        padding: 0;
+
+        flex: 0 0 40px;
+        margin-left: 0;
+        justify-content: flex-end;
+        position: absolute;
+        right: 0;
+        top: 3px; 
+    }
+    .btn-inverse,
+    .btn-inverse:visited  {
+        border-radius: 0;
+        color: $icon-button-laudo;
+        background-color: inherit;
+
+        &.btn-inverse:hover {
+            color: $text-white-theme-base;
+        }
+    }    
+    .btn-inverse:focus,
+    .btn-inverse:active {
+        outline: none;
+        color: $icon-button-laudo;
+        background-color: $bg-dropdown;
+    }
+
+    // Datas + Mod
+    .info-center {
+        justify-content: center;
+    }
+}
+
+.datatable-body-row {
+    outline:none;
+
+    > div {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+    }
+}
+
+.datatable-row-wrapper {
+    overflow: visible !important;
+}

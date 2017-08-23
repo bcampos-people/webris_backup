@@ -1,0 +1,148 @@
+<div id="mdl_laudo" class="mdl_laudo min">
+  <header>
+    <nav class="mdl_control">
+      <button type="button" class="btn btn-link" value="rsz" (click)="modalResize()"><span class="glyphicon glyphicon-resize-full"></span></button>
+      <button type="button" class="btn btn-link" value="min" (click)="modalMinimize()"><span class="glyphicon glyphicon-minus"></span></button>
+      <button type="button" class="btn btn-link" value="max" (click)="modalClose()"><span class="glyphicon glyphicon-remove"></span></button>
+    </nav>
+
+    <div class="mdl_menu">
+      <ul class="opcoes_edicao">
+        <li><button type="button" class="btn btn-link btn-laudo-edit"><span class="icon icon_salvar-como-laudado"></span> Salvar como Laudado</button></li>
+        <li><button type="button" class="btn btn-link btn-laudo-edit"><span class="icon icon_liberar-sem-revisar"></span> Liberar sem Revisar</button></li>
+        <li><button type="button" class="btn btn-link btn-laudo-edit"><span class="icon icon_salvar"></span> Salvar</button></li>
+        <li class="checkbox"><label><input type="checkbox"> Assumir Laudo</label></li>
+      </ul>
+
+      <ul class="mdl_submenu">
+        <li class="checkbox"><label><input type="checkbox"> Urgente</label></li>
+        <li><button type="button" class="btn btn-link btn-laudo-submenu"><span class="icon icon_laudo-idg"></span></button></li>
+        <li>
+          <button type="button" class="btn btn-link btn-laudo-submenu bdg" nbr="3" (click)="showDropVNC()">
+            <span class="icon icon_laudo-vnc"></span>
+            <ul class="laudo-dropdown inactive">
+              <li class="checkbox"><label><input type="checkbox"> CT - Tomografia Comp. de Coluna Cervical, Dorsal</label></li>
+              <li class="checkbox"><label><input type="checkbox"> MR - Ressonância Arterial de Crânio</label></li>
+              <li class="checkbox"><label><input type="checkbox"> MR - Angiorressonância Arterial do Crânio</label></li>
+              <li class="checkbox"><label><input type="checkbox"> CT - Tomografia Comp. de Coluna Cervical</label></li>
+              <li><button type="button" class="btn btn-carregar-laudo">Vincular Selecionados</button></li>
+            </ul>
+          </button>
+        </li>
+        <li><button type="button" class="btn btn-link btn-laudo-submenu"><span class="icon icon_laudo-doc"></span></button></li>
+        <li><button type="button" class="btn btn-link btn-laudo-submenu"><span class="icon icon_laudo-ozx"></span></button></li>
+        <li><button type="button" class="btn btn-link btn-laudo-submenu"><span class="icon icon_laudo-web"></span></button></li>
+        <li><button type="button" class="btn btn-link btn-laudo-submenu"><span class="icon icon_laudo-htc"></span></button></li>
+      </ul>
+    </div>
+
+    <div class="mdl_paciente">
+      <ul class="info">
+        <li>
+          <small>Paciente</small>
+          <span>Fábio Nunes Braga da Silva Roberto</span>
+        </li>
+        <li>
+          <small>Gênero</small>
+          <span>Masculino</span>
+        </li>
+        <li>
+          <small>Idade</small>
+          <span>35</span>
+        </li>
+        <li>
+          <small>Data de Nascimento</small>
+          <span>23/10/1981</span>
+        </li>
+        <li>
+          <small>Data do Estudo</small>
+          <span>05/10/2017 | 15h:30m</span>
+        </li>
+        <li>
+          <small>Data de Realização do Exame</small>
+          <span>14/06/2017 | 15h:30m</span>
+        </li>
+        <li>
+          <small>Solicitante</small>
+          <span>Dr. Nilogram Almeida Tavares</span>
+        </li>
+      </ul>
+    </div>
+  </header>
+  
+  <section>
+    <div class="conteudo">
+      <div id="ld_header"></div>
+      
+      <div class="intro-laudo">
+        <p class="indicacao">Indicação clínica: Lorem ipsum dolor sit amet...</p>
+        <input class="input-titulo" type="text" value="Tomografia Computadorizada Torax"> 
+      </div>
+
+      <textarea name="editor1" id="editor1">
+        Digite o texto do laudo
+      </textarea>
+      
+      <div id="ld_bottom"></div>
+    </div>
+
+    <div class="modelos_laudo">
+      <h2 class="titulo">Modelos de Laudo</h2>
+      
+      <tabset [justified]="true">
+        <tab customClass="tabs-laudo" disabled="true">
+          <template tabHeading>
+            <span class="icon icon-busca_laudos"></span> Busca
+          </template>
+          <div class="tabs-laudo-content">Lorem ipsum</div>
+        </tab>
+        <tab customClass="tabs-laudo" disabled="true">
+          <template tabHeading>
+            <span class="icon icon-meus_laudos"></span> Meus Laudos
+          </template>
+          <div class="tabs-laudo-content">Lorem ipsum</div>
+        </tab>
+        <tab customClass="tabs-laudo" [active]="true">
+          <template tabHeading>
+            <span class="icon icon-mascaras_laudos"></span> Máscaras
+          </template>
+          <div class="tabs-laudo-content">
+            <div class="form-group">
+              <label for="mascara_grupos">Grupo:</label>
+              <select id="mascara_grupos" class="form-control">
+                <option>Medicina Interna</option>
+                <option>Medicina Externa</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mascara_regiao">Região:</label>
+              <select id="mascara_regiao" class="form-control">
+                <option>Tórax</option>
+                <option>Abdomen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mascara_mnemonico">Mnemonico:</label>
+              <select id="mascara_mnemonico" class="form-control">
+                <option>Tórax Normal</option>
+                <option>Abdomen Normal</option>
+              </select>
+            </div>
+
+            <div class="form-controls">
+              <button class="btn btn-block btn-outline btn-wrapper">
+                Preview do Laudo
+                <!-- <div class="preview-tooltip">I am a tooltip!</div> -->
+              </button>
+
+              <button class="btn btn-block btn-carregar-laudo">Carregar Laudo</button>
+            </div>
+          </div>
+        </tab>
+      </tabset>
+    </div>
+  </section>
+</div>
+
+<div id="mdl_overlay" class="mdl_overlay">
+</div>

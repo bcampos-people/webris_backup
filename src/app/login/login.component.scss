@@ -1,0 +1,30 @@
+#container {
+    // background-color: blue;
+    height: 100%;
+    background-image: url('/assets/img/login/bg_login.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#form{
+    width: 550px;
+    //background-color: #01367F;
+    // background-color: rgba(1, 54, 127, 0.8);
+    background-color: rgba(7, 46, 101, 0.7);
+    height: 550px;
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 10%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+
+    img{
+        padding-top:50px;
+        width:40%;
+        // margin:auto;
+    }
+    .form-control{
+        margin-top: 20px !important;
+    }
+}

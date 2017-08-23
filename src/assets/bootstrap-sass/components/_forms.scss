@@ -1,0 +1,76 @@
+.form-group-half {
+    width: 60%;
+    padding: 0;
+    margin: 50px auto;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"] {
+    font-size: 16px;
+    padding: 26px 12px;
+}
+input[type="text"]:first-of-type, 
+input[type="password"]:first-of-type {
+    padding-right: 52px;
+    outline: none !important;
+}
+
+input:-webkit-autofill, .input-transparent {
+    border: 1px solid rgba($brand-primary, 0.5) !important;
+    background-color: transparent !important;
+    color: $text-white-theme-base !important;
+    margin-bottom: 20px !important; 
+    font-weight: 100;
+    font-size: 19px;
+    width: 100%;
+}
+::-webkit-input-placeholder {  color:$text-dark-theme-base; }
+:-ms-input-placeholder { color:$text-dark-theme-base; }
+::-moz-placeholder { color:$text-dark-theme-base; }
+:-moz-placeholder { color:$text-dark-theme-base; }
+
+
+/* Buttons */
+.btn {
+    &.btn-default {
+        border: 0;
+        outline: 0 !important;
+        padding: 15px !important;
+        border-radius: 5px !important;
+    }
+
+    &.btn-outline,
+    &.btn-outline:focus,
+    &.btn-outline:active {
+        border: 1px solid $text-white-theme-base !important;
+        color: $text-white-theme-base !important;
+        background-color: transparent;
+
+        &.btn-outline:hover {
+            border-color: darken($text-white-theme-base, 30%) !important;
+            color: darken($text-white-theme-base, 30%) !important;
+        }
+    }
+
+    &.btn-carregar-laudo,
+    &.btn-carregar-laudo:hover,
+    &.btn-carregar-laudo:focus,
+    &.btn-carregar-laudo:active {
+        color: $text-white-theme-base;
+        background-color: $bg-button-laudo !important;
+    }
+
+    &.btn-green,
+    &.btn-green:active  {
+        font-size: 1.2em;
+        font-weight: bold; 
+        background-color: $icon-button-laudo !important;
+        color: $text-white-theme-base !important;
+    
+        &.btn-green:hover,
+        &.btn-green:focus {
+            background-color: lighten($icon-button-laudo, 5%) !important;
+        }
+    }
+}

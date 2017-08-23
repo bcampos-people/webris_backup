@@ -1,0 +1,35 @@
+.tooltip > .tooltip-inner {
+    // min-width: 500px;
+    padding: 10px;
+    font-size: 11px;
+    text-align: left;
+    line-height: 1.75;
+    color: rgba(0,0,0,.7);
+    background-color: rgb(255,255,255) !important;
+
+    // > .titulo {
+    //     margin: 7px 0;
+    //     font-size: 1.25em;
+    //     font-weight: bold;
+    //     color: $bg-dropdown !important;
+    // }
+
+    // > .content {
+    //     margin: 20px 0;
+    //     line-height: 1.75;
+    // }
+
+    // > .btn-close {
+    //     color: white; 
+    //     background-color: $bg-dropdown;
+    // }
+}
+.tooltip > .tooltip-arrow {
+    // border-width: 10px;
+    // border-style: solid;
+    border-color: white transparent transparent transparent !important;
+}
+
+.tooltip.in {
+    opacity: 1 !important;
+}

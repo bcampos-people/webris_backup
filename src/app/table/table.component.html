@@ -1,0 +1,261 @@
+<!--*ngIf="showFixedHeader"  -->
+<div [style.display]="!isLoading ? 'block': 'none'">
+    <div id="table_fixed" [style.display]="showFixedHeader">
+        <!-- <app-resultado-busca></app-resultado-busca> -->
+        <table  class="table-webris" id="table_top_fixed">
+            <thead>
+            
+            </thead>
+        </table>
+    
+    </div>
+    <p [style.display]="showFixedHeader" ></p> 
+    <table class="table-webris" id="{{userTableId}}">
+        <thead>
+            <tr>
+                <th id="lst_atendimento" style="width:380px">
+                    <div class="table-header">
+                        
+                        <span class="some-handle">Atendimento</span>
+                        <div class="btn-group btn-group-md">
+                            <button type="button" class="btn btn-link btn-sort" (click)="sort('atdmt_id')">
+                                <span class="glyphicon" [ngClass]="{'glyphicon-sort': column != 'atdmt_id', 'glyphicon-menu-down': (column == 'atdmt_id' && isDesc), 'glyphicon-menu-up': (column == 'atdmt_id' && !isDesc) }"></span>
+                            </button> 
+                        </div>
+                        <span id="resize_lst_atendimento" class="grip"></span> 
+                    </div>
+                </th>
+                <th id="lst_paciente" class="accept">
+                    <div class="table-header">
+                        
+                        <span class="some-handle">Paciente</span>
+                        <div class="btn-group btn-group-md">
+                            <button type="button" class="btn btn-link btn-sort" (click)="sort('paciente')">
+                                <span class="glyphicon" 
+                                    [ngClass]="{'glyphicon-sort': column != 'paciente', 'glyphicon-menu-down': (column == 'paciente' && isDesc), 'glyphicon-menu-up': (column == 'paciente' && !isDesc) }">
+                                </span>
+                            </button>
+                        </div>
+                        <span id="resize_lst_paciente" class="grip"></span>
+                    </div>
+                </th>
+                <th id="lst_solicitante" class="accept">
+                    <div class="table-header">
+                        <span class="some-handle">Médico Solicitante</span>
+                        <div class="btn-group btn-group-md">
+                            <button type="button" class="btn btn-link btn-sort" (click)="sort('medico')">
+                                <span class="glyphicon" [ngClass]="{'glyphicon-sort': column != 'medico', 'glyphicon-menu-down': (column == 'medico' && isDesc), 'glyphicon-menu-up': (column == 'medico' && !isDesc) }"></span>
+                            </button>
+                        </div>
+                        <span id="resize_lst_solicitante" class="grip"></span>
+                    </div>
+                </th>
+                <th id="lst_registro" class="accept">
+                    <div class="table-header">
+                        <span class="some-handle">Data (Registro)</span>
+                        <div class="btn-group btn-group-md">
+                            <button type="button" class="btn btn-link btn-sort" (click)="sort('registro')">
+                                <span class="glyphicon" [ngClass]="{'glyphicon-sort': column != 'registro', 'glyphicon-menu-down': (column == 'registro' && isDesc), 'glyphicon-menu-up': (column == 'registro' && !isDesc) }"></span>
+                            </button>
+                        </div>
+                        <span id="resize_lst_registro" class="grip"></span>
+                    </div>
+                </th>
+                <th id="lst_realizacao" class="accept">
+                    <div class="table-header">
+                        <span class="some-handle">Data (Realização)</span>
+                        <div class="btn-group btn-group-md">
+                            <button type="button" class="btn btn-link btn-sort" (click)="sort('realizacao')">
+                                <span class="glyphicon" [ngClass]="{'glyphicon-sort': column != 'realizacao', 'glyphicon-menu-down': (column == 'realizacao' && isDesc), 'glyphicon-menu-up': (column == 'realizacao' && !isDesc) }"></span>
+                            </button>
+                        </div>
+                        <span id="resize_lst_realizacao" class="grip"></span>
+                    </div>
+                </th>
+                <th id="lst_mod" class="accept">
+                    <div class="table-header">
+                        <span class="some-handle">Modalidade</span>
+                        <div class="btn-group btn-group-md">
+                            <button type="button" class="btn btn-link btn-sort" (click)="sort('mod')">
+                                <span class="glyphicon" [ngClass]="{'glyphicon-sort': column != 'mod', 'glyphicon-menu-down': (column == 'mod' && isDesc), 'glyphicon-menu-up': (column == 'mod' && !isDesc) }"></span>
+                            </button>
+                        </div>
+                        <span id="resize_lst_mod" class="grip"></span>
+                    </div>
+                </th>
+                <th id="lst_exame" class="accept">
+                    <div class="table-header">
+                        <span class="some-handle">Exame</span>
+                        <div class="btn-group btn-group-md">
+                            <button type="button" class="btn btn-link btn-sort" (click)="sort('exame')">
+                                <span class="glyphicon" [ngClass]="{'glyphicon-sort': column != 'exame', 'glyphicon-menu-down': (column == 'exame' && isDesc), 'glyphicon-menu-up': (column == 'exame' && !isDesc) }"></span>
+                            </button>
+                        </div>
+                        <span id="resize_lst_exame" class="grip"></span>
+                    </div>
+                </th>
+                <th id="lst_status" class="accept">
+                    <div class="table-header">
+                        <span class="some-handle">Status</span>
+                        <div class="btn-group btn-group-md">
+                            <button type="button" class="btn btn-link btn-sort" (click)="sort('rotulo')">
+                                <span class="glyphicon" [ngClass]="{'glyphicon-sort': column != 'rotulo', 'glyphicon-menu-down': (column == 'rotulo' && isDesc), 'glyphicon-menu-up': (column == 'rotulo' && !isDesc) }"></span>
+                            </button>
+                        </div>
+                        <span id="resize_lst_status" class="grip"></span>
+                    </div>
+                </th>
+                <th id="lst_setor" class="accept">
+                    <div class="table-header">
+                        <span class="some-handle">Setor</span>
+                        <div class="btn-group btn-group-md">
+                            <button type="button" class="btn btn-link btn-sort" (click)="sort('setor')">
+                                <span class="glyphicon" [ngClass]="{'glyphicon-sort': column != 'setor', 'glyphicon-menu-down': (column == 'setor' && isDesc), 'glyphicon-menu-up': (column == 'setor' && !isDesc) }"></span>
+                            </button>
+                        </div>
+                        <span id="resize_lst_setor" class="grip"></span>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of rowsFiltered">
+                <td>
+                    <div class="table-body">
+                        <div class="label-box label-{{ item.classe }} label-box-first"></div>
+                        <span class="atendimento-num">{{ item.atdmt_id }}</span>
+                        <ul class="nav nav-pills">
+                            <li [style.display]="item.icons.impressaoDiag ? 'block': 'none'">
+                                <template #impDiag>
+                                    <button class="btn btn-sm btn-close pull-right"><i class="glyphicon glyphicon-remove"></i></button>
+                                    <h4 class="titulo">Impressão Diagnóstica</h4>
+                                    <p class="content">
+                                        <strong>Paciente: {{ item.paciente }}</strong><br>
+                                        {{ item.diagnostico }}
+                                    </p>
+
+                                    <a href="#">Acessar tela de laudo</a>
+                                </template>
+
+                                <button class="btn btn-radius btn-status__id"
+                                        containerClass="tp-diagnostico"
+                                        [tooltip]="impDiag"
+                                        placement="right"
+                                        container="body"
+                                        triggers="focus">
+                                </button>
+                            </li>
+                            <li [style.visibility]="item.icons.ditafone ? 'visible': 'hidden'">
+                                <button class="btn btn-radius btn-status__dit"
+                                        (click)="ditafoneModal.show()">
+                                </button>
+                                <div class="modal fade" bsModal #ditafoneModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" 
+                                        role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title pull-left">Ditafone</h3>
+                                                <button type="button" class="close pull-right" aria-label="Close" (click)="ditafoneModal.hide()">
+                                                    <i class="glyphicon glyphicon-remove"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>[ componente de audio ]</p>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </li>
+                            <li [style.visibility]="item.icons.docs ? 'visible': 'hidden'">
+                                <button class="btn btn-radius btn-status__doc"></button>
+                            </li>
+                            <li [style.display]="item.icons.vinculacao ? 'block': 'none'">
+                                <button class="btn btn-radius btn-status__vnc"></button>
+                            </li>
+                            <li [style.visibility]="item.icons.osirix ? 'visible': 'hidden'">
+                                <button class="btn btn-radius btn-status__ozx"></button>
+                            </li>
+                            <li [style.display]="item.icons.webViewer ? 'block': 'none'">
+                                <button class="btn btn-radius btn-status__web"></button>
+                            </li>
+                            <li [style.visibility]="item.icons.laudo ? 'visible' :'hidden'">
+                                <button class="btn btn-radius btn-laudo btn-status__ldo"
+                                        (click)="openLaudoModal()">
+                                </button>
+                                <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title pull-left">Exemplo de Modal</h3>
+                                                <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()"><i class="glyphicon glyphicon-remove"></i></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="cut-off">
+                    <div class="table-body col-paciente">
+                        <span   [id]="item.atdmt_id" class="nome-paciente" 
+                                [ngClass]="{'pointer': item.icons.laudo}" 
+                                (click)="openOzirix(item.icons.laudo , item.id_atend)">
+                            {{ item.paciente }}
+                        </span>
+                        <div class="btn-toolbar" role="toolbar" [style.display]="isADMUser ? 'block': 'none'">
+                            <div class="btn-group btn-group-md" dropdown>
+                                <button dropdownToggle type="button" class="btn btn-inverse dropdown-toggle"><span class="glyphicon glyphicon-menu-down"></span></button>
+                                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                    <li role="divider">Alteração de Status</li>
+                                    <li role="menuitem"><a class="dropdown-item" href="#">Retornar para revisão</a></li>
+                                    <li role="menuitem"><a class="dropdown-item" href="#">Voltar para laudar</a></li>
+                                    <li role="divider">Manutenção</li>
+                                    <li role="menuitem"><a class="dropdown-item" href="#">Cancelar</a></li>
+                                    <li role="menuitem"><a class="dropdown-item" href="#">Liberar registro bloqueado</a></li>
+                                    <li role="menuitem"><a class="dropdown-item" href="#">Remover vínculo</a></li>
+                                    <li role="menuitem"><a class="dropdown-item" href="#">Voltar de complemento</a></li>
+                                    <li role="divider">Opções</li>
+                                    <li role="menuitem"><a class="dropdown-item" (click)="copiarNome($event.target)">Copiar nome do paciente</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span>{{ item.medico }}</span>
+                </td>
+                <td class="text-center">
+                    <span *ngIf="item.registro.data">{{ item.registro.data }} - {{item.registro.hora}}</span>
+                    <span *ngIf="!item.registro.data">NA</span>
+                </td>
+                <td class="text-center">
+                    <span *ngIf="item.realizacao.data">{{ item.realizacao.data }} - {{item.realizacao.hora}}</span>
+                </td>
+                <td class="text-center">
+                    <span>{{ item.mod }}</span>
+                </td>
+                <td>
+                    <span>{{ item.exame }}</span>
+                </td>
+                <td>
+                    <app-status [item]="item" ></app-status>
+                </td>
+                <td>
+                    <span>{{ item.setor }}</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="loading" [style.display]="isLoading ? 'block': 'none'">
+    <div>
+        <img src="assets/img/DoubleRing.svg" alt="">
+    </div>
+    <div>
+        <h2>Carregando ...</h2>    
+    </div>
+</div>

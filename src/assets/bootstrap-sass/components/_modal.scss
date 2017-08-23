@@ -1,0 +1,513 @@
+// .modal-content {
+//     color: $text-dark-theme-base;
+//     background-color: $bg-header-filters !important;
+//     > .modal-header {
+//         border-bottom-color: transparent;
+//     }
+//     > .modal-body {
+//         overflow-y: auto;
+//         overflow-x: over
+//     }
+// }
+.mdl_laudo,
+.mdl_ditafone {
+    top: 50%;
+    left: 50%;
+    z-index: 2020;
+    display: flex;
+    position: fixed;
+    max-width: 100%;
+    max-height: 100%;
+    visibility: hidden;
+    border-radius: 15px;
+    flex-direction: column;
+    color: $text-dark-theme-base;
+    transform: translate(-50%, -50%);
+    background-color: $bg-header-base;
+    // transition
+    -webkit-transition: top 3s, width .5s, height .5s, visibility .5s, -webkit-transform .5s;
+    transition: top 3s, width .5s, height .5s, visibility .5s, transform .5s;
+    &.min {
+        width: 90vw;
+        height: 90vh;
+    }
+    &.max {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+    /* section: header */
+    >header {
+        top: 0;
+        left: 0;
+        position: relative;
+        >.mdl_control {
+            height: 50px;
+            display: flex;
+            padding: 0 20px;
+            align-items: center;
+            justify-content: flex-end;
+            >.btn-link {
+                padding: 5px;
+                margin-right: 5px;
+                color: $text-dark-theme-base;
+                &:last-child {
+                    margin-right: 0;
+                }
+                &:first-child {
+                    border: 1px solid $text-dark-theme-base;
+                    border-top-width: 4px;
+                    padding: 1px 4px 0;
+                }
+            }
+        }
+        >.mdl_menu {
+            display: flex;
+            justify-content: space-between;
+            background-color: $bg-header-filters;
+            >.opcoes_edicao,
+            .mdl_submenu {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                >li label {
+                    margin: 0;
+                    padding: 0;
+                }
+                >li button {
+                    border-radius: 0;
+                    padding: 15px;
+                }
+            }
+            >.opcoes_edicao>li:not(:last-child) {
+                border-right: 2px solid #012c67;
+                // Icons
+                >.btn-laudo-edit {
+                    margin: 0;
+                    display: flex;
+                    color: white;
+                    padding-right: 20px;
+                    align-items: center;
+                    >.icon {
+                        width: 30px;
+                        height: 30px;
+                        display: block;
+                        margin-right: 5px;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        &.icon_salvar-como-laudado {
+                            background-image: url(./assets/img/icons/ico-salvar-como-laudado.png);
+                        }
+                        &.icon_liberar-sem-revisar {
+                            background-image: url(./assets/img/icons/ico-liberar-sem-revisar.png);
+                        }
+                        &.icon_salvar {
+                            background-image: url(./assets/img/icons/ico-salvar.png);
+                        }
+                    }
+                }
+            }
+            >.opcoes_edicao li.checkbox {
+                padding: 0 0 0 40px;
+            }
+            >.mdl_submenu {
+                justify-content: flex-end;
+            }
+            >.mdl_submenu>li:not(:first-child) {
+                border-left: 2px solid #012c67;
+                >.btn-laudo-submenu {
+                    margin: 0;
+                    display: flex;
+                    color: white;
+                    align-items: center;
+                    >.icon {
+                        width: 30px;
+                        height: 30px;
+                        display: block;
+                        background-size: 29px;
+                        background-repeat: no-repeat;
+                        &.icon_laudo-idg {
+                            background-image: url(./assets/img/icons/ico_laudo-idg_29x29.png);
+                        }
+                        &.icon_laudo-vnc {
+                            background-image: url(./assets/img/icons/ico_laudo-vnc_29x29.png);
+                        }
+                        &.icon_laudo-doc {
+                            background-image: url(./assets/img/icons/ico_laudo-doc_29x29.png);
+                        }
+                        &.icon_laudo-ozx {
+                            background-image: url(./assets/img/icons/ico_laudo-ozx_29x29.png);
+                        }
+                        &.icon_laudo-web {
+                            background-image: url(./assets/img/icons/ico_laudo-web_29x29.png);
+                        }
+                        &.icon_laudo-htc {
+                            background-image: url(./assets/img/icons/ico_laudo-htc_29x29.png);
+                        }
+                    }
+                }
+            }
+            >.mdl_submenu li.checkbox {
+                padding: 0 20px 0 0;
+            }
+            >.mdl_submenu>li>button {
+                position: relative;
+                display: inline-block;
+            }
+            >.mdl_submenu>li>button>.laudo-dropdown {
+                // Centralizando
+                top: 0;
+                left: 50%;
+                position: absolute;
+                width: auto;
+                z-index: 2030;
+                display: block;
+                text-align: left;
+                list-style: none;
+                padding-top: 10px;
+                padding-right: 20px;
+                padding-bottom: 20px;
+                background-color: $bg-header-base;
+                -webkit-transition: all .2s .2s ease-in;
+                transition: all .2s .2s ease-in;
+                &.active {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translate(-52.5%, 30%);
+                }
+                &.inactive {
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translate(-52.5%, 40%);
+                }
+                &:after {
+                    width: 0;
+                    height: 0;
+                    left: 50%;
+                    top: -20px;
+                    content: " ";
+                    border-width: 10px;
+                    position: absolute;
+                    border-style: solid;
+                    border-color: transparent transparent $bg-header-base transparent;
+                }
+                >li:last-child {
+                    margin: 20px 0 0 -20px;
+                }
+                >li>.btn {
+                    padding: 5px 15px;
+                }
+            }
+            >.mdl_submenu>li>button.bdg {
+                position: relative;
+            }
+            >.mdl_submenu>li>button.bdg[nbr]:after {
+                top: -15px;
+                left: 30%;
+                width: 25px;
+                height: 25px;
+                font-size: 90%;
+                font-weight: bold;
+                padding-top: 3px;
+                content: attr(nbr);
+                position: absolute;
+                border-radius: 50%;
+                background-color: $badge-color;
+                box-shadow: 0 0 2px rgba(0, 0, 0, .4);
+            }
+        }
+        >.mdl_paciente {
+            background-color: $bg-paciente-info;
+            >.info {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                font-size: 1.1em;
+                list-style: none;
+                >li {
+                    padding: 15px 20px;
+                    font-weight: bold;
+                }
+                >li small {
+                    display: block;
+                    font-size: 1rem;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                    color: darken($text-dark-theme-base, 30%);
+                }
+                >li:not(:last-child) {
+                    border-right: 2px solid $border-paciente-info;
+                }
+            }
+        }
+    }
+    /* section: conteudo */
+    >section {
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex: 1 0 auto;
+        position: relative;
+        >.conteudo {
+            top: 0;
+            left: 0;
+            padding: 0;
+            width: 80%;
+            height: 100%;
+            flex: 1 1 80%;
+            overflow: hidden;
+            position: absolute;
+            color: $text-content-col;
+            background-color: $bg-content-col;
+            border-bottom-left-radius: 10px;
+        }
+        >.modelos_laudo {
+            top: 0;
+            right: 0;
+            width: 20%;
+            height: 100%;
+            flex: 1 1 auto;
+            overflow: auto;
+            position: absolute;
+            background-color: $bg-laudo-col;
+            border-bottom-right-radius: 10px;
+            >.titulo {
+                margin: 0;
+                padding: 20px 0;
+                font-size: 1.5em;
+                text-align: center;
+                text-transform: uppercase;
+                background-color: #4a4a4a;
+            }
+            >.tab-container {
+                >.nav>.tabs-laudo>.nav-link {
+                    display: flex;
+                    font-size: .9em;
+                    padding: 15px 0;
+                    border-radius: 0;
+                    font-weight: bold;
+                    flex-direction: column;
+                    border: 1px solid #3a3a3a;
+                    background-color: #3a3a3a;
+                    color: darken($text-white-theme-base, 70%);
+                    >.glyphicon {
+                        font-size: 2em;
+                        margin-bottom: 15px;
+                    }
+                    >.icon {
+                        width: 30px;
+                        height: 30px;
+                        opacity: 0.3;
+                        margin: 0 auto 5px;
+                        background-size: 30px;
+                        background-position: center;
+                        &.icon-busca_laudos {
+                            background-image: url(./assets/img/icons/ico-busca_laudos.png);
+                        }
+                        &.icon-meus_laudos {
+                            background-image: url(./assets/img/icons/ico-meus_laudos.png);
+                        }
+                        &.icon-mascaras_laudos {
+                            background-image: url(./assets/img/icons/ico-mascaras_laudos.png);
+                        }
+                    }
+                    &.active {
+                        border: 1px solid transparent;
+                        background-color: transparent;
+                        color: $text-white-theme-base;
+                        .icon {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            .tabs-laudo-content {
+                padding: 20px;
+                >.form-controls {
+                    margin-top: 15%;
+                    >.btn:not(:last-child) {
+                        margin-bottom: 15px;
+                    }
+                    // Tooltip
+                    >.btn-wrapper {
+                        position: relative;
+                        -webkit-transform: translate(0);
+                        -webkit-font-smoothing: antialiased;
+                        .preview-tooltip {
+                            color: #333;
+                            display: block;
+                            top: -25%;
+                            right: 100%;
+                            bottom: 100%;
+                            left: -15px;
+                            margin-right: 10px;
+                            opacity: 1;
+                            padding: 10px 20px;
+                            pointer-events: none;
+                            position: absolute;
+                            width: 100%;
+                            background-color: white;
+                            border: 1px solid red;
+                        }
+                        .preview-tooltip:before {
+                            bottom: 0;
+                            content: " ";
+                            display: block;
+                            height: 20px;
+                            left: 0;
+                            position: absolute;
+                            width: 100%;
+                        }
+                        .preview-tooltip:after {
+                            width: 0;
+                            height: 0;
+                            content: " ";
+                            border-width: 5px;
+                            position: absolute;
+                            border-style: solid;
+                            border-color: transparent transparent transparent red;
+                        }
+                        &:hover .preview-tooltip {
+                            opacity: 0;
+                            pointer-events: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    & .mdl_closed {
+        display: none;
+    }
+}
+
+// Ditafone
+.mdl_ditafone {
+    visibility: visible; // REMOVER
+    &.min {
+        width: 25vw;
+        height: 75vh;
+    }
+    header {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-color: $bg-header-ditafone;
+        >.mdl_control {
+            padding: 0 10px;
+            justify-content: space-between;
+            >span {
+                display: flex;
+                font-size: 1.15em;
+                font-weight: bold;
+                align-items: center;
+                >.icon {
+                    width: 30px;
+                    height: 30px;
+                    display: inline-block;
+                    &.icon-ditafone {
+                        background-image: url(./assets/img/icons/ico-dit_28x28.png);
+                        background-repeat: no-repeat;
+                    }
+                }
+            }
+            >.btn-link {
+                &:first-child {
+                    border: none;
+                    padding: 0;
+                }
+            }
+        }
+    }
+    section {
+        padding: 15px;
+        flex-direction: column;
+        .config {
+            text-align: right;
+            padding-bottom: 10px;
+        }
+        main {
+            overflow: hidden;
+            >p {
+                font-size: 1em;
+                font-weight: bold;
+                text-transform: uppercase;
+                >small {
+                    display: block;
+                    font-weight: normal;
+                    color: rgba(255, 255, 255, .5)
+                }
+            }
+        }
+    }
+    footer {
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        background-color: #02275B;
+        justify-content: space-between;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        >.btn-action-ditafone,
+        .btn-action-ditafone:hover,
+        .btn-action-ditafone:focus,
+        .btn-action-ditafone:active {
+            color: $text-dark-theme-base;
+            background-color: $bg-button-ditafone;
+        }
+    }
+}
+
+// CKEditor
+#ld_header {
+    padding: 20px;
+}
+
+.cke_top {
+    border-radius: 5px !important;
+}
+
+.intro-laudo {
+    padding: 0 20px;
+    .indicacao {
+        font-size: 1em;
+        color: #a6a6a6;
+    }
+    .input-titulo {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        color: #000;
+        font-weight: 800;
+        font-size: 1.75em;
+        border-color: transparent;
+        text-transform: uppercase;
+    }
+}
+
+// Remover borda do CKEditor
+.cke_chrome {
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+}
+
+#ld_bottom {
+    visibility: hidden;
+}
+
+// Modal Overlay
+.mdl_overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2010;
+    position: fixed;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, .7);
+    -webkit-transition: visibility .5s, -webkit-transform .5s;
+    transition: visibility .5s, transform .5s;
+}

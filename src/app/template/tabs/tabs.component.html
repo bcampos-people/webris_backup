@@ -1,0 +1,313 @@
+<!-- <div (click)="$event.preventDefault()"> -->
+<div>
+    <!-- <button type="button" class="btn btn-primary btn-sm" (click)="tabs = []"  *ngIf="tabs.length">
+    Remove all tabs
+  </button>  -->
+
+    <tabset>
+        <tab heading="Todos">
+            <form [formGroup]="form">
+                <div class="header_tabs">
+                    <!-- Buscar -->
+                    <div class="col-md-5">
+                        <div class="btn-group has-feedback has-feedback-right">
+                            <p class="label-form">
+                                <span class="label-title">Buscar:</span>
+                                <label for="buscaBase" class="active"><input type="radio" id="buscaBase" value="base" checked> Em toda base</label>
+                                <label class="hide" for="buscaFiltro"><input type="radio" id="buscaFiltro" value="filtro"> Nesta aba com filtro selecionado</label>
+                            </p>
+                            <input type="text" class="form-control btn-secundary" id="usr" placeholder="Nome do paciente solicitante, prontuário, exame ou atendimento" formControlName="textoBusca">
+                            <i class="form-control-feedback glyphicon glyphicon-search"></i>
+                        </div>
+                    </div>
+
+                    <!-- Data -->
+                    <div class="col-md-3">
+                        <div class="btn-group" dropdown>
+                            <p class="label-form">
+                                <span class="label-title">Data:</span>
+                                <label for="dataPedido" class="active"><input type="radio" name="dataFieldChecked" id="dataPedido" value="registro" checked (change)="onDateFieldChange($event.target.value)"> Pedido</label>
+                                <label for="dataRealizacao"><input type="radio" name="dataFieldChecked" id="dataRealizacao" value="realizacao" (change)="onDateFieldChange($event.target.value)"> Realização</label>
+                                <button class="btn-link" (click)="openDatePicker()">
+                                  <i class="glyphicon glyphicon-calendar"></i>
+                                  <div id="dt-picker" class="dt-picker inactive">
+                                      <p>Selecione a data inicial</p>
+                                      <datepicker [(ngModel)]="dt" [customClass]="filtro-data" [minDate]="minDate" [showWeeks]="false" [dateDisabled]="dateDisabled"></datepicker>
+                                  </div>
+                                </button>
+                            </p>
+
+                            <button id="data-chooser-shift" dropdownToggle type="button" class="btn btn-secundary btn-lg">
+                                <!-- Todas2  -->
+                                {{ state.selectedDateItem.label }}
+                                <span class="glyphicon glyphicon-menu-down"></span>
+                            </button>
+
+
+                            <!-- <ul *dropdownMenu class="dropdown-menu" role="menu">
+                              <li role="menuitem"><a class="dropdown-item claro-shine" href="#">Todos os dias</a></li>
+                              <li role="menuitem"><a class="dropdown-item claro-shine" href="#">Hoje</a></li>
+                              <li role="menuitem"><a class="dropdown-item claro-shine" href="#">Semana passada</a></li>
+                              <li role="menuitem"><a class="dropdown-item claro-shine" href="#">últimos 30 dias</a></li>
+                              <li role="menuitem"><a class="dropdown-item claro-shine" href="#">Últimos 90 dias</a></li>
+                              <li role="menuitem"><a class="dropdown-item claro-shine" href="#">1 ano atrás</a></li>
+                            </ul> -->
+
+                            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                <li role="menuitem" *ngFor="let item of dataCombo">
+                                    <a class="dropdown-item claro-shine" (click)="filterWorkList('date', item)">
+                    {{item.label}}
+                  </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="col-md-2" id="statusDrop">
+                        <div class="btn-group" dropdown [autoClose]="false">
+                            <p class="label-form">
+                                <span class="label-title">Status:</span>
+                            </p>
+
+
+                            <!--             
+  <<<<<<< master
+<ul class="dropdown-menu dropdown-options">
+              <li role="menuitem"><a class="dropdown-item claro" href="#">Nenhum</a></li>
+              <li role="options">
+                <div class="item-modalidade">
+                  <label><input type="checkbox" value="CT" checked><strong>CT</strong></label>
+                  <select data-show-icon="true">
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                  </select>
+                </div>
+              </li>
+              <li role="options">
+                <div class="item-modalidade">
+                  <label><input type="checkbox" value="MR" checked><strong>MR</strong></label>
+                  <select data-show-icon="true">
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                    
+                  </select>
+                </div>
+              </li>
+              <li role="options">
+                <div class="item-modalidade">
+                  <label><input type="checkbox" value="US" checked><strong>US</strong></label>
+                  <select data-show-icon="true">
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                  </select>
+                </div>
+              </li>
+              <li role="options">
+                <div class="item-modalidade">
+                  <label><input type="checkbox" value="NM" checked><strong>NM</strong></label>
+                  <select data-show-icon="true">
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                  </select>
+                </div>
+              </li>
+              <li role="options">
+                <div class="item-modalidade">
+                  <label><input type="checkbox" value="XA" checked><strong>XA</strong></label>
+                  <select data-show-icon="true">
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                  </select>
+                </div>
+              </li>
+              <li role="options">
+                <div class="item-modalidade">
+                  <label><input type="checkbox" value="CR" checked><strong>CR</strong></label>
+                  <select data-show-icon="true">
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                    <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                  </select>
+======= 
+-->
+                            <button id="data-chooser-shift" dropdownToggle type="button" class="btn btn-secundary btn-lg">
+                <div style="display:inline;padding:0; margin:0" *ngIf="!state.status.onlySelected">Todos</div>
+                <div style="display:inline;" *ngIf="state.status.onlySelected">
+                  <strong>
+                      Filtrado
+                  </strong>
+                  <!--  -->
+                </div>
+                <span class="glyphicon glyphicon-menu-down"></span>
+              </button>
+
+                            <!-- <ul class="dropdown-menu dropdown-options">
+                <li role="menuitem"><a class="dropdown-item claro" href="#">Nenhum</a></li>
+                <li role="options"><label><input type="checkbox" value="registrado" checked><strong>Registrado</strong></label></li>
+                <li role="options"><label><input type="checkbox" value="laudar" checked><strong>Para Laudar</strong></label></li>
+                <li role="options"><label><input type="checkbox" value="liberado" checked><strong>Liberado</strong></label></li>
+                <li role="options"><label><input type="checkbox" value="ditafone" checked><strong>Ditafone</strong></label></li>
+                <li role="options"><label><input type="checkbox" value="completar" checked><strong>A Completar</strong></label></li>
+                <li role="options"><label><input type="checkbox" value="cancelado" checked><strong>Cancelado</strong></label></li>
+                <li role="options"><label><input type="checkbox" value="externo" checked><strong>Externo</strong></label></li>
+                <li role="options"><a class="btn-close" href="#" (click)="closeMenu()">Fechar</a></li>
+              </ul> -->
+
+                            <ul class="dropdown-menu dropdown-options">
+                                <li role="menuitem" class="flex">
+                                    <a class="dropdown-item claro selectionButtons" (click)="setStatusListSelection(false)">
+                    Nenhum
+                  </a>
+                                    <a class="dropdown-item claro selectionButtons" (click)="setStatusListSelection(true)">
+                    Todos
+                  </a>
+                                </li>
+                                <li *ngFor="let s of statusList; let i = index" role="options">
+                                    <label>
+                    <input type="checkbox" [value]="s.nome_status"
+                      [checked]="state.statusListState[i].checked"
+                      (change)="filterStatus(s.nome_status, $event.target.checked)" >
+                    <strong>{{s.nome_status}}</strong>
+                  </label>
+                                </li>
+                                <li role="options"><a class="btn-close" (click)="closeMenu()">Fechar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Modalidade -->
+                    <div class="col-md-2" id="modalidadeDrop">
+                        <div class="btn-group" dropdown [autoClose]="false">
+                            <p class="label-form">
+                                <span class="label-title">Modalidade:</span>
+                            </p>
+
+                            <button id="data-chooser-shift" dropdownToggle type="button" class="btn btn-secundary dropdown-toggle btn-lg">
+                Todas <span class="glyphicon glyphicon-menu-down"></span>
+              </button>
+
+                            <ul class="dropdown-menu dropdown-options">
+                                <li role="menuitem"><a class="dropdown-item claro" href="#">Nenhum</a></li>
+                                <li role="options" *ngFor="let mod of modalitiesList">
+                                    <div class="item-modalidade">
+                                        <label>
+                      <input type="checkbox" value="CT"
+                            [checked]="state.modalitiesListState[mod].checked"
+                            (change)="filterModalidades(mod, $event.target.checked)">
+                      <strong>{{mod}}</strong>
+                    </label>
+                                        <select data-show-icon="true">
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                      <option *ngFor="let gc of grupoClinicoList[mod]"
+                              data-content="<i class='glyphicon glyphicon-menu-down'></i>"
+                              [value]="gc.id_grupo">
+                        {{gc.nome_grupo}}
+                      </option>
+                      <!-- <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option> -->
+                    </select>
+                                    </div>
+                                </li>
+                                <!-- <li role="options">
+                  <div class="item-modalidade">
+                    <label><input type="checkbox" value="MR" checked><strong>MR</strong></label>
+                    <select data-show-icon="true">
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                    </select>
+                  </div>
+                </li>
+                <li role="options">
+                  <div class="item-modalidade">
+                    <label><input type="checkbox" value="US" checked><strong>US</strong></label>
+                    <select data-show-icon="true">
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                    </select>
+                  </div>
+                </li>
+                <li role="options">
+                  <div class="item-modalidade">
+                    <label><input type="checkbox" value="NM" checked><strong>NM</strong></label>
+                    <select data-show-icon="true">
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                    </select>
+                  </div>
+                </li>
+                <li role="options">
+                  <div class="item-modalidade">
+                    <label><input type="checkbox" value="XA" checked><strong>XA</strong></label>
+                    <select data-show-icon="true">
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                    </select>
+                  </div>
+                </li>
+                <li role="options">
+                  <div class="item-modalidade">
+                    <label><input type="checkbox" value="CR" checked><strong>CR</strong></label>
+                    <select data-show-icon="true">
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                    </select>
+                  </div>
+                </li>
+                <li role="options">
+                  <div class="item-modalidade">
+                    <label><input type="checkbox" value="MG" checked><strong>MG</strong></label>
+                    <select data-show-icon="true">
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                    </select>
+                  </div>
+                </li>
+                <li role="options">
+                  <div class="item-modalidade">
+                    <label><input type="checkbox" value="OT" checked><strong>OT</strong></label>
+                    <select data-show-icon="true">
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#todos">Todos</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_1">Opção 1</option>
+                      <option data-content="<i class='glyphicon glyphicon-menu-down'></i>" value="#option_2">Opção 2</option>
+                    </select>
+                  </div>
+                </li> -->
+                                <li role="options"><a class="btn-close" (click)="closeMenu()">Fechar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </tab>
+
+        <!--
+      <tab *ngFor="let tabz of tabs"
+         [heading]="tabz.title"
+         [active]="tabz.active"
+         (select)="tabz.active = true"
+         (deselect)="tabz.active = false"
+         [disabled]="tabz.disabled"
+         [removable]="tabz.removable"
+         (removed)="removeTabHandler(tabz)"
+         [customClass]="tabz.customClass">
+         {{tabz?.content}}
+      </tab>
+    -->
+
+    </tabset>
+    <!--
+  <button type="button" class="btn btn-primary btn-sm" (click)="addNewTab()">
+    +
+  </button>
+  -->
+</div>

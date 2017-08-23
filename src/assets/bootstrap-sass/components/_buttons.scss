@@ -1,0 +1,29 @@
+.btn-radius,
+.btn-radius:active {
+    width: $datatable-size-btn-bullet;
+    height: $datatable-size-btn-bullet;
+    
+    display: block;
+    border-radius: 50% !important;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .3) !important;
+
+    &.btn-laudo {
+        background-color: $icon-button-laudo;
+        border: 1px solid $icon-button-laudo;
+    }
+
+    &[class*='btn-status__'] {
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    &.btn-status__id   { background-image: url(./assets/img/icons/ico-id_28x28.png);   }
+    &.btn-status__dit  { background-image: url(./assets/img/icons/ico-dit_28x28.png);  }
+    &.btn-status__doc  { background-image: url(./assets/img/icons/ico-doc_28x28.png);  }
+    &.btn-status__vnc  { background-image: url(./assets/img/icons/ico-vnc_28x28.png);  }
+    &.btn-status__ozx  { background-image: url(./assets/img/icons/ico-ozx_28x28.png);  }
+    &.btn-status__web  { background-image: url(./assets/img/icons/ico-web_28x28.png);  }
+    &.btn-status__ldo  { background-image: url(./assets/img/icons/ico-ldo_28x28.png);  }
+}

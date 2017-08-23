@@ -1,0 +1,32 @@
+td.cut-off {
+    .dropdown-menu {
+        border: none;
+        margin-top: -1px;
+        box-shadow: none;
+        border-radius: 0px;
+        box-sizing: border-box;
+        font-size: $font-size-base;
+        background-color: $bg-dropdown;
+
+        li {
+            a {
+                padding: 5px 15px;
+                margin-bottom: 5px;
+                color: $brand-primary;
+                text-decoration: underline;
+                
+                &:hover {
+                    background-color: transparent;
+                    opacity: 0.6;
+                }
+            }
+        }
+
+        [role=divider] {
+            margin: 10px 0;
+            padding: 5px 15px;
+            font-weight: bold;
+            background-color: $bg-header-base;
+        }
+    }
+}

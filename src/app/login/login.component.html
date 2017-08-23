@@ -1,0 +1,12 @@
+<div id="container">
+  <div id="form">
+    <img src="/assets/img/login/logo.png" alt="">
+
+    <div class="form-group form-group-half">
+      <input type="text" #userName name="usuario" value="" class="form-control input-transparent">
+      <input type="password" #password name="senha" value="" class="form-control input-transparent">
+      <button type="" class="btn btn-default btn-block btn-green"
+      (click)="doLogin(userName.value, password.value)">Entrar</button>
+    </div>
+  </div>
+</div>

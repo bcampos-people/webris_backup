@@ -1,0 +1,258 @@
+<generic-table
+    [gtSettings]="configObject.settings"
+    [gtFields]="configObject.fields"
+    [gtData]="configObject.data"
+    [gtOptions]="{ numberOfRows: 1000 }">
+</generic-table> 
+
+<!--
+<table id="localStorageTable" class="table table-striped table-bordered tablesorter">
+    <thead>
+        <tr>
+            <th>
+                <span>Atendimento</span>
+            </th>
+            <th id="lst_medico" class="accept">
+                <div class="some-handle"></div>
+                <span>Paciente</span>
+            </th>
+            <th id="lst_medico" class="accept">
+                <div class="some-handle"></div>
+                <span>Médico</span>
+            </th>
+            <th id="lst_registro" class="accept">
+                <div class="some-handle"></div>
+                <span>Registro</span>
+            </th>
+            <th id="lst_realizacao" class="accept">
+                <div class="some-handle"></div>
+                <span>Realização</span>
+            </th>
+            <th id="lst_mod" class="accept">
+                <div class="some-handle"></div>
+                <span>Mod.</span>
+            </th>
+            <th id="lst_exame" class="accept">
+                <div class="some-handle"></div>
+                <span>Exame</span>
+            </th>
+            <th id="lst_status" class="accept">
+                <div class="some-handle"></div>
+                <span>Status</span>
+            </th>
+            <th id="lst_setor" class="accept">
+                <div class="some-handle"></div>
+                <span>Setor</span>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td class="table-flex">
+                <span class="badge"></span>
+            </td>
+            <td class="table-flex">
+                <span>Aracy Cabral da Silva Campos</span>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-down"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span>Dr. George Freire Nunes</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 9:00h</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 19:00h</span>
+            </td>
+            <td>
+                <span>MR</span>
+            </td>
+            <td>
+                <span>Lorem ipsum dolor sit</span>
+            </td>
+            <td>
+                <span class="badge">Para Laudar</span>
+            </td>
+            <td>
+                <span>Atendimento</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-flex">
+                <span class="badge"></span>
+            </td>
+            <td class="table-flex">
+                <span>Aracy Cabral da Silva Campos</span>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-down"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span>Dr. George Freire Nunes</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 9:00h</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 19:00h</span>
+            </td>
+            <td>
+                <span>MR</span>
+            </td>
+            <td>
+                <span>Lorem ipsum dolor sit</span>
+            </td>
+            <td>
+                <span class="badge">Para Laudar</span>
+            </td>
+            <td>
+                <span>Atendimento</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-flex">
+                <span class="badge"></span>
+            </td>
+            <td class="table-flex">
+                <span>Aracy Cabral da Silva Campos</span>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-down"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span>Dr. George Freire Nunes</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 9:00h</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 19:00h</span>
+            </td>
+            <td>
+                <span>MR</span>
+            </td>
+            <td>
+                <span>Lorem ipsum dolor sit</span>
+            </td>
+            <td>
+                <span class="badge">Para Laudar</span>
+            </td>
+            <td>
+                <span>Atendimento</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-flex">
+                <span class="badge"></span>
+            </td>
+            <td class="table-flex">
+                <span>Aracy Cabral da Silva Campos</span>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-down"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span>Dr. George Freire Nunes</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 9:00h</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 19:00h</span>
+            </td>
+            <td>
+                <span>MR</span>
+            </td>
+            <td>
+                <span>Lorem ipsum dolor sit</span>
+            </td>
+            <td>
+                <span class="badge">Para Laudar</span>
+            </td>
+            <td>
+                <span>Atendimento</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="table-flex">
+                <span class="badge"></span>
+            </td>
+            <td class="table-flex">
+                <span>Aracy Cabral da Silva Campos</span>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-down"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span>Dr. George Freire Nunes</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 9:00h</span>
+            </td>
+            <td>
+                <span>14/07/2017 - 19:00h</span>
+            </td>
+            <td>
+                <span>MR</span>
+            </td>
+            <td>
+                <span>Lorem ipsum dolor sit</span>
+            </td>
+            <td>
+                <span class="badge">Para Laudar</span>
+            </td>
+            <td>
+                <span>Atendimento</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+-->

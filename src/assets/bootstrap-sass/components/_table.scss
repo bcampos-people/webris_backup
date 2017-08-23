@@ -1,0 +1,243 @@
+$datatable-row-height: 45px;
+$datatable-row-padding: 15px;
+$datatable-head-height: 50px;
+$datatable-size-btn-bullet: 28px;
+
+/* * * * * * * * * * * * * * * */
+
+
+
+.table-webris > tr > th,
+.table-webris > tr > td {
+    box-sizing: content-box;
+    vertical-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.table-webris > tbody > tr > td,
+.table-webris > tbody > tr > th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.table-webris {
+    // RESIZE FIXO
+    width: 100%; 
+
+    // RESIZE FLUÍDO
+    // min-width: 100%; (acontece um bug que redimenciona automaticamente)
+
+    font-size: 1em;
+    table-layout: fixed;
+    white-space: nowrap;    
+    background-color: $bg-dark-theme;
+    
+    th {
+        height: $datatable-head-height;
+        border-bottom: 5px solid $bg-dark-theme;
+    }
+
+    th:first-child {
+        width: 300px;
+    }
+    
+    th:not(:last-child) {
+        border-right: 2px solid darken($text-dark-theme-base,80%);
+    }
+    
+    tr {
+        border-bottom: 5px solid $bg-dark-theme;
+    }
+
+    tr > td {
+        height: $datatable-row-height;
+        color: darken($text-dark-theme-base, 30%);
+        
+        > span {
+            display: inline-block;
+            padding: 0 $datatable-row-padding;
+        }
+    }
+
+    // colgroup {
+    //     border-right: 1px dashed darken($text-dark-theme-base, 50%);
+    // }
+    
+    tbody tr:nth-of-type(odd) {
+        background-color: $bg-light-datagrid;
+    }
+
+    // FIXAR HEADER (entra em conflito com o resize de colunas)
+    // thead {
+    //     width: 100%;
+    //     display: block;
+    //     overflow: auto;
+    //     height: $datatable-head-height;
+    // }
+}
+
+
+
+.table-header {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    height: $datatable-head-height;
+
+    > .some-handle {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        padding-left: $datatable-row-padding;
+        color: darken($text-dark-theme-base, 30%);
+    }
+    > .btn-group {
+        display: flex;
+        align-items: center;
+
+        > .btn-sort span {
+            color: darken($text-dark-theme-base, 30%) !important;
+        }
+    }
+
+    > .grip {
+        width: 5px;
+        content: "";
+        cursor: ew-resize;
+        position: relative;
+    } 
+}
+
+/* Table Body */
+.table-body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    > * {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+        box-sizing: content-box;
+        justify-content: flex-start;
+        padding-left: $datatable-row-padding;
+        padding-right: $datatable-row-padding;
+    }
+
+    // Atendimento
+    > .label-box-first {
+        padding: 0;
+        flex: 0 0 40px;
+    }
+
+    > .atendimento-num {
+        flex: 1 1 25%;
+        justify-content: flex-end;
+    }
+
+    > .nav-pills {
+        flex: 1 0 auto;
+        padding-left: 0;
+        justify-content: space-between;
+        padding-right: $datatable-row-padding;
+    }
+
+    // Paciente
+    &.col-paciente {
+        position: relative;
+        top: 0;
+    }
+    > .nome-paciente {
+        //cursor: pointer;
+        flex: 1 1 180px;
+        padding-right: 0;
+    }
+    > .btn-toolbar {
+        flex: 0 0 40px;
+        margin-left: 0;
+        justify-content: flex-end;
+        position: absolute;
+        padding: 0;
+        right: 0; 
+    }
+    .btn-inverse,
+    .btn-inverse:visited  {
+        border-radius: 0;
+        color: $icon-button-laudo;
+        background-color: inherit;
+
+        &.btn-inverse:hover,
+        &.btn-inverse:focus,
+        &.btn-inverse:active {
+            outline: 0 !important;
+            box-shadow: none !important;;
+            color: $text-white-theme-base;
+            background-color: $bg-dropdown;
+        }
+    }    
+    .btn-inverse:focus,
+    .btn-inverse:active {
+        color: $icon-button-laudo;
+        background-color: $bg-dropdown;
+    }
+}
+
+
+/* Label */
+.label-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $datatable-row-height;
+    
+    &.label-laudar     { background: $col-label-laudar;  }
+    &.label-revisar    { background: $col-label-revisar; }
+    &.label-ditafone   { background: $col-label-ditafone; }
+    &.label-registrado { background: $col-label-registrado; }
+    &.label-manuscrito { background: $col-label-manuscrito; }
+    &.label-externo    { background: $col-label-externo; }
+    &.label-liberado   { background: $col-label-liberado; }
+    &.label-cancelado  { background: $col-label-cancelado; }
+    &.label-entregue   { background: $col-label-entregue; }
+    
+    &.label-box-border {
+        border-left: 5px solid $bg-dark-theme;
+        border-right: 5px solid $bg-dark-theme;
+    }
+}
+
+// Overflow:
+td.cut-off {
+    overflow: visible !important;
+}
+
+div.table-header,
+div.table-body {
+    > span {
+        position: relative !important;
+        overflow: hidden !important;
+    }
+
+    > .btn-toolbar {
+        position: absolute !important;
+    }
+}
+
+tbody > tr:nth-of-type(odd) > td.cut-off {
+    .btn-inverse {
+        background-color: $bg-light-datagrid;
+    }
+}
+tbody > tr:nth-of-type(even) > td.cut-off {
+    .btn-inverse {
+        background-color: $bg-dark-theme;
+    }
+}
+
+.btn.active.focus, .btn.active:focus,
+.btn.focus, .btn:active.focus, 
+.btn:active:focus, .btn:focus {
+    outline: none !important;
+}

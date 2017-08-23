@@ -1,0 +1,30 @@
+<template #tpLaudo>
+  <span *ngIf="item.classe == 'laudar'">
+    <strong>Laudado em:</strong> 
+  </span>
+  
+  <span *ngIf="item.classe == 'registrado'">
+    <strong>Registrado em:</strong> 
+  </span>
+
+  <span *ngIf="!item.motivo_cancel">
+    {{item.registro.data}}:{{item.registro.hora}} 
+    <strong>por:</strong><br>
+    {{ item.medico }}
+    <br>
+  </span>
+  
+  <span *ngIf="item.motivo_cancel">
+    <strong>Data cancelamento: </strong>{{item.motivo_cancel.data_cancel | date}}
+    <strong>Motivo cancelamento: </strong>{{item.motivo_cancel.motivo_cancel}}
+    <strong>Usuario: </strong>{{item.motivo_cancel.Ultimo_usuario}}
+  </span>
+  
+  
+</template>
+
+<div class="label-box label-box-border label-{{ item.classe }}" [tooltip]="tpLaudo"
+    placement="top"
+    container="body"> 
+    <span>{{ item.rotulo }}</span>
+</div>
